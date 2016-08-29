@@ -48,6 +48,7 @@ const Select = React.createClass({
 		escapeClearsValue: React.PropTypes.bool,    // whether escape clears the value when the menu is closed
 		filterOption: React.PropTypes.func,         // method to filter a single option (option, filterString)
 		filterOptions: React.PropTypes.any,         // boolean to enable default filtering or function to filter the options array ([options], filterString, [values])
+		id: React.PropTypes.string,                 // optional attribute
 		ignoreAccents: React.PropTypes.bool,        // whether to strip diacritics when filtering
 		ignoreCase: React.PropTypes.bool,           // whether to perform case-insensitive filtering
 		inputProps: React.PropTypes.object,         // custom attributes for the Input
@@ -135,7 +136,8 @@ const Select = React.createClass({
 			simpleValue: false,
 			tabSelectsValue: true,
 			valueComponent: Value,
-			valueKey: 'value',
+      valueKey: 'value',
+      id: 'react-select'
 		};
 	},
 
@@ -774,7 +776,8 @@ const Select = React.createClass({
 				onFocus: this.handleInputFocus,
 				ref: 'input',
 				required: this.state.required,
-				value: this.state.inputValue
+				value: this.state.inputValue,
+        id: this.props.id
 			});
 
 			if (this.props.disabled || !this.props.searchable) {
@@ -792,7 +795,8 @@ const Select = React.createClass({
 						onFocus={this.handleInputFocus}
 						ref="input"
 						aria-readonly={'' + !!this.props.disabled}
-						style={{ border: 0, width: 1, display:'inline-block' }}/>
+						style={{ border: 0, width: 1, display:'inline-block' }}
+            id={id} />
 				);
 			}
 
