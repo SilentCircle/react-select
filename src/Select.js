@@ -796,7 +796,7 @@ const Select = React.createClass({
 						ref="input"
 						aria-readonly={'' + !!this.props.disabled}
 						style={{ border: 0, width: 1, display:'inline-block' }}
-            id={id} />
+            id={this.props.id || 'react-select' } />
 				);
 			}
 
